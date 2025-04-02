@@ -17,12 +17,12 @@ const AppointmentForm = () => {
 
   return (
     <section id="appointment" className="py-16 bg-yellow-100">
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center bg-white shadow-lg rounded-lg p-8">
+      <div className=" max-w-5xl mx-auto flex flex-col md:flex-row items-center bg-white shadow-lg rounded-lg p-8">
         
         {/* Left Side - Image */}
         <div className="md:w-1/2 hidden md:block">
           <img 
-            src="appointmentForm.png"
+            src="/appointmentForm.png"
             alt="Doctor"
             className="w-full rounded-lg"
           />

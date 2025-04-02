@@ -26,7 +26,7 @@ const AboutCard = () => {
   
   const YouTubeCard = () => {
     return (
-      <section className="py-16 bg-pink-100">
+      <section className="py-16 bg-green-100">
         <div className="max-w-4xl mx-auto bg-yellow-100 shadow-md rounded-lg p-8">
           
           {/* YouTube Video Embed */}

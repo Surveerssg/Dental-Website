@@ -8,11 +8,21 @@ const Hero = () => {
 
   return (
     <section>
-      {/* Background Image */}
-      <div
-        className="h-[80vh] bg-[url('https://images.pexels.com/photos/6627537/pexels-photo-6627537.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')] 
-        bg-cover bg-center"
-      ></div>
+      <div className="relative h-[80vh] w-full">
+  {/* Background Image with Overlay */}
+  <div
+    className="absolute inset-0 bg-[url('https://images.pexels.com/photos/6627537/pexels-photo-6627537.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')] 
+    bg-cover bg-center opacity-70"
+  ></div>
+
+  <div className="absolute inset-0 flex items-center justify-center">
+    <h1 className=" bg-opacity-50 px-4 py-2 rounded-lg text-blue-400 text-5xl font-bold">
+      Quality Dental Care <br />
+       for Every Smile!
+    </h1>
+  </div>
+</div>
+
 
       {/* Hero Text */}
       <div className="flex flex-col items-center text-center px-6 py-12 lg:py-20 bg-yellow-100">
