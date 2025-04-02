@@ -15,7 +15,7 @@ const Hero = () => {
       ></div>
 
       {/* Hero Text */}
-      <div className="flex flex-col items-center text-center px-6 py-12 lg:py-20">
+      <div className="flex flex-col items-center text-center px-6 py-12 lg:py-20 bg-yellow-100">
         <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
           Your Smile, Our Passion
         </h1>

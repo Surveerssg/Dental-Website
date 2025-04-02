@@ -16,7 +16,7 @@ const AppointmentForm = () => {
   };
 
   return (
-    <section id="appointment" className="py-16 bg-gray-100">
+    <section id="appointment" className="py-16 bg-yellow-100">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center bg-white shadow-lg rounded-lg p-8">
         
         {/* Left Side - Image */}

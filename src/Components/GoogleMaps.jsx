@@ -1,6 +1,6 @@
 const GoogleMaps = () => {
   return (
-    <div className="text-center p-10">
+    <div className="text-center p-10 bg-yellow-100 mb-0">
       <h2 className="text-3xl font-bold mb-4">Find Us Here</h2>
       <iframe
         className="w-full max-w-3xl h-80 mx-auto border rounded-lg"
