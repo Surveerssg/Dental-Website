@@ -1,26 +1,27 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const faqs = [
   {
     question: "Why should I go to the dentist regularly?",
     answer:
-      'Many people do not see a dentist on a regular basis. They only go when they have a problem. This is known as "crisis treatment" versus "preventive treatment." While these patients may feel they are saving money, it often ends up costing much more in dollars and time. This is because many dental problems do not have symptoms until they reach the advanced stages of the disease process. An example is tooth decay. It is typical to hear, "Nothing hurts... I don\'t have any problems." \n\nTooth decay often does not hurt until it gets close to the nerve of the tooth. It is not uncommon to see a patient with a huge cavity who has never felt a thing. The dentist can usually detect a cavity 3-4 years before it develops any symptoms. This early detection can help you prevent root canal treatment.',
+      'Regular dental visits prevent serious issues before they start, saving you time and money in the long run. Many problems, like cavities and gum disease, don’t show symptoms until they are severe.',
   },
   {
     question: "Why should I floss, isn't brushing enough?",
     answer:
-      "Flossing reduces the number of bacteria in your mouth. There are millions of these microscopic creatures feeding on food particles left on your teeth. These bacteria live in plaque which can be removed by flossing. Brushing your teeth gets rid of some of the bacteria in your mouth. Flossing gets rid of the bacteria the toothbrush can't get to. That's the bacteria hiding in the tiny spaces between your teeth. If you do not floss, you allow plaque to remain between your teeth. Eventually, it hardens into tartar. Plaque can be removed by brushing. Only the dentist can remove tartar.",
+      'Flossing removes plaque and bacteria from areas your toothbrush cannot reach, reducing the risk of cavities and gum disease.',
   },
   {
     question: "How can I get my kids to brush their teeth?",
     answer:
-      "Make it fun! If you are enthusiastic about brushing your teeth, your children will also be enthusiastic. Children want to do the things their parents do. If your children see you brushing your teeth and displaying good dental habits, they will follow. Ask the dentist for other creative ways to get children to brush their teeth.\n\nGetting your children to brush starts with taking them to the dentist at an early age. All children should be seen by their first birthday or 6 months after the eruption of the first tooth.",
+      'Make brushing fun! Use a reward system, play their favorite song, or let them pick their own toothbrush and toothpaste.',
   },
   {
     question: "How can I prevent cavities?",
     answer:
-      "Always spend two to three minutes brushing your teeth. It takes that long to get rid of the bacteria that destroy tooth enamel. Do not brush too hard. It takes very little pressure to remove bacteria and plaque. Floss at least once a day. Flossing is the only way to get bacteria from between your teeth.\n\nWatch the sugar you eat. There is sugar in candy, fruits, crackers, and chips. These are the foods that the bacteria in your mouth like best. Be mindful of foods like raisins and peanut butter that stick to your teeth. They can provide a constant supply for the bacteria eating into your teeth. Try to minimize the times during the day when sweet items are eaten and brush your teeth afterward.\n\nIf you cannot brush after a meal, rinse your mouth with water - which can help to remove food from your teeth. Chewing sugarless gum after a meal can also help. Chewing stimulates the flow of your saliva which acts as a natural plaque-fighting substance. And do not forget your regular dental visits. Good dental habits will go a long way toward a no-cavity visit.",
+      'Brush twice daily with fluoride toothpaste, floss daily, limit sugary foods, and visit the dentist regularly for cleanings and check-ups.',
   },
 ];
 
@@ -32,21 +33,22 @@ const FAQ = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 sm:p-4 bg-yellow-100">
-      <h1 className="text-4xl font-bold text-center mb-6">General Dentistry FAQs</h1>
-      <p className="text-center text-gray-600 mb-6">
-        Have a question that is not answered below? Feel free to give us a call and ask!
-      </p>
+    <div className="max-w-4xl mx-auto p-8 bg-white rounded-2xl shadow-lg">
+      <h1 className="text-4xl font-bold text-center text-blue-800 mb-6">Frequently Asked Questions</h1>
+      <p className="text-center text-gray-600 mb-8">Find answers to common questions about dental care and hygiene.</p>
+      
       <div className="space-y-4">
         {faqs.map((faq, index) => (
-          <div key={index} className="border rounded-lg shadow-lg">
+          <div key={index} className="border border-gray-200 rounded-xl shadow-sm overflow-hidden">
             <button
-              className="w-full p-4 flex justify-between items-center bg-blue-500 text-white font-medium text-lg sm:text-base"
+              className={`w-full p-5 flex justify-between items-center transition-all duration-300 text-lg font-medium ${openIndex === index ? "bg-blue-600 text-white" : "bg-white text-blue-800"}`}
               onClick={() => toggleFAQ(index)}
+              aria-expanded={openIndex === index}
             >
               {faq.question}
-              <span className="text-2xl">{openIndex === index ? "−" : "+"}</span>
+              {openIndex === index ? <ChevronUp size={22} /> : <ChevronDown size={22} />}
             </button>
+
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={openIndex === index ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
@@ -54,22 +56,19 @@ const FAQ = () => {
               className="overflow-hidden"
             >
               {openIndex === index && (
-                <div className="p-4 bg-white text-gray-700">
-                  {faq.answer.split("\n\n").map((paragraph, i) => (
-                    <p key={i} className="mb-3">{paragraph}</p>
-                  ))}
+                <div className="p-5 bg-gray-50 text-gray-700">
+                  <p className="leading-relaxed">{faq.answer}</p>
                 </div>
               )}
             </motion.div>
           </div>
         ))}
       </div>
-
-      {/* ✅ Contact Us Button Here */}
-      <div className="text-center mt-8">
+      
+      <div className="text-center mt-10">
         <a
           href="/contact"
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300"
+          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 text-lg"
         >
           Contact Us for More Info
         </a>

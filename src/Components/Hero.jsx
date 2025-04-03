@@ -7,40 +7,76 @@ const Hero = () => {
   };
 
   return (
-    <section>
-      <div className="relative h-[80vh] w-full">
-  {/* Background Image with Overlay */}
-  <div
-    className="absolute inset-0 bg-[url('https://images.pexels.com/photos/6627537/pexels-photo-6627537.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')] 
-    bg-cover bg-center opacity-70"
-  ></div>
+    <section className="relative">
+      {/* Hero Image Section */}
+      <div className="relative h-[80vh] w-full overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div
+          className="absolute inset-0 bg-[url('https://images.pexels.com/photos/6627537/pexels-photo-6627537.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')] 
+          bg-cover bg-center"
+        ></div>
+        
+        {/* Dark Overlay for better text readability */}
+        <div className="absolute inset-0 bg-blue-900 opacity-40"></div>
+        
+        {/* Main Hero Content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
+          <div className="text-center max-w-3xl mx-auto">
+            <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-lg">
+              Quality Dental Care <br />
+              <span className="text-blue-300">for Every Smile!</span>
+            </h1>
+            <p className="text-white text-lg md:text-xl mb-8 max-w-xl mx-auto drop-shadow">
+              Professional dental services with a gentle touch for patients of all ages
+            </p>
+            <button
+              onClick={scrollToAppointment}
+              className="bg-blue-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105"
+            >
+              Book Your Appointment
+            </button>
+          </div>
+        </div>
+      </div>
 
-  <div className="absolute inset-0 flex items-center justify-center">
-    <h1 className=" bg-opacity-50 px-4 py-2 rounded-lg text-blue-400 text-5xl font-bold">
-      Quality Dental Care <br />
-       for Every Smile!
-    </h1>
-  </div>
-</div>
-
-
-      {/* Hero Text */}
-      <div className="flex flex-col items-center text-center px-6 py-12 lg:py-20 bg-yellow-100">
-        <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-          Your Smile, Our Passion
-        </h1>
-        <p className="text-lg text-gray-600 mb-6 max-w-2xl">
-          Providing top-notch dental care to help you achieve a healthy and
-          confident smile.
-        </p>
-
-        {/* Button with Smooth Scroll */}
-        <button
-          onClick={scrollToAppointment}
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300"
-        >
-          Book an Appointment
-        </button>
+      {/* Features Section */}
+      <div className="bg-white py-8 lg:py-12">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Feature 1 */}
+            <div className="bg-blue-50 rounded-xl p-6 text-center shadow-md">
+              <div className="w-16 h-16 mx-auto mb-4 bg-blue-600 rounded-full flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Same-Day Appointments</h3>
+              <p className="text-gray-600">Emergency care when you need it most</p>
+            </div>
+            
+            {/* Feature 2 */}
+            <div className="bg-blue-50 rounded-xl p-6 text-center shadow-md">
+              <div className="w-16 h-16 mx-auto mb-4 bg-blue-600 rounded-full flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Modern Technology</h3>
+              <p className="text-gray-600">State-of-the-art equipment for precise care</p>
+            </div>
+            
+            {/* Feature 3 */}
+            <div className="bg-blue-50 rounded-xl p-6 text-center shadow-md">
+              <div className="w-16 h-16 mx-auto mb-4 bg-blue-600 rounded-full flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Comfortable Experience</h3>
+              <p className="text-gray-600">Gentle care in a relaxing environment</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
