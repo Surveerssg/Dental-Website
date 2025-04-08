@@ -26,8 +26,15 @@ const AboutCard = () => {
               <h2 className="text-3xl font-bold text-gray-800">About Dr. Guglani</h2>
             </div>
             <p className="text-gray-700 leading-relaxed mb-6">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nunc sit amet suscipit varius, purus libero tincidunt nulla, non sollicitudin lacus lorem ac libero. Fusce condimentum scelerisque felis, vel faucibus nunc tincidunt ac.
-            </p>
+  With 32 years of dental excellence, Dr. Sarabpreet Singh Guglani is a distinguished Specialist Dental Surgeon known for his commitment to patient-centered care. A graduate of D.A.V. (C) Dental College, Yamuna Nagar (BDS 1988–1992), he has been a trusted name in Delhi’s dental community since establishing his practice in 1993. 
+
+  Dr. Guglani has held numerous leadership roles within the Indian Dental Association, including President of the North West Delhi branch in 2017, Advisor to IDA North-West Delhi, and Chairman-CDH for IDA Delhi State. His involvement continues as a representative to the IDA Delhi State branch and a Central Council member of IDA Head Office.
+
+  Beyond dentistry, he is actively engaged in social service through the Lions Club, where he has served as Deputy Cabinet Secretary. He also plays key roles in local community organizations, including the Residents Welfare Association and Gurdwara C-3 in Keshav Puram.
+
+  Dr. Guglani’s dedication to clinical excellence and community welfare has made him a respected leader and trusted healthcare provider in North Delhi.
+</p>
+
             <div className="flex flex-wrap gap-4">
               <div className="flex items-center bg-blue-50 rounded-lg px-4 py-2">
                 <div className="w-3 h-3 rounded-full bg-blue-600 mr-2"></div>

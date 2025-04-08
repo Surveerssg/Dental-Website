@@ -87,15 +87,33 @@ const Contact = () => {
               <div className="mt-8">
                 <h4 className="font-semibold text-gray-700 mb-3">Connect With Us</h4>
                 <div className="flex space-x-4">
-                  <a href="#" className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition">
-                    <FaFacebook />
-                  </a>
-                  <a href="#" className="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition">
-                    <FaInstagram />
-                  </a>
-                  <a href="#" className="bg-green-600 text-white p-3 rounded-full hover:bg-green-700 transition">
-                    <FaWhatsapp />
-                  </a>
+                <a 
+  href="https://www.facebook.com/guglanidentist" 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition"
+>
+  <FaFacebook />
+</a>
+
+<a 
+  href="https://www.instagram.com/dentist_guglani/" 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  className="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition"
+>
+  <FaInstagram />
+</a>
+
+<a 
+  href="https://wa.me/919810806678?text=Hello" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="bg-green-600 text-white p-3 rounded-full hover:bg-green-700 transition"
+>
+  <FaWhatsapp />
+</a>
+
                 </div>
               </div>
             </div>

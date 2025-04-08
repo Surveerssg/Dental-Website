@@ -1,31 +1,42 @@
-import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import {
+  FaFacebook, FaInstagram, FaTwitter, FaLinkedin,
+  FaMapMarkerAlt, FaPhone, FaEnvelope, FaWhatsapp
+} from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate(); 
+
+  const scrollToAppointment = () => {
+    navigate("/", { state: { scrollToAppointment: true } });
+  };
+
   const currentYear = new Date().getFullYear();
-  
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-6">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Column 1: About */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Dr. Guglani's Dental</h3>
+            <h3 className="text-xl font-bold mb-4">Dr. Guglani's Multispecialty Dental Centre</h3>
             <p className="text-gray-400 mb-4">
-              Providing quality dental care with the latest technology and a gentle touch since 2005.
+              Providing quality dental care with the latest technology and a gentle touch since 1993.
             </p>
             <div className="flex space-x-4 mt-6">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.facebook.com/guglanidentist" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <FaFacebook size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.instagram.com/dentist_guglani/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <FaInstagram size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://x.com/dentistguglani" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <FaTwitter size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/in/dr-sarabpreet-singh-guglani-6a406229/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <FaLinkedin size={20} />
+              </a>
+              <a href="https://wa.me/919810806678?text=Hello" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <FaWhatsapp size={20} />
               </a>
             </div>
           </div>
@@ -64,15 +75,23 @@ const Footer = () => {
                 { name: "Services", path: "/services" },
                 { name: "Gallery", path: "/gallery" },
                 { name: "FAQs", path: "/faq" },
-                { name: "Book Appointment", path: "/appointment" }
+                { name: "Book Appointment", path: "#appointment" }
               ].map((link) => (
                 <li key={link.name}>
                   <Link 
-                    to={link.path} 
-                    className="text-gray-400 hover:text-white transition-colors inline-block py-1"
-                  >
-                    {link.name}
-                  </Link>
+  to={link.path.startsWith("#") ? "/" + link.path : link.path}
+  onClick={() => {
+    if (link.path.startsWith("#")) {
+      setTimeout(() => {
+        document.getElementById(link.path.substring(1))?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }}
+  className="text-gray-400 hover:text-white transition-colors inline-block py-1"
+>
+  {link.name}
+</Link>
+
                 </li>
               ))}
             </ul>
@@ -99,12 +118,14 @@ const Footer = () => {
             </ul>
             
             <div className="mt-6">
-              <Link 
-                to="/appointment" 
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors inline-block"
-              >
-                Book Appointment
-              </Link>
+            <button
+  onClick={scrollToAppointment}
+  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors inline-block"
+>
+  Book Appointment
+</button>
+
+
             </div>
           </div>
         </div>
