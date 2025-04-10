@@ -97,7 +97,7 @@ const Header = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-lg">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {["Home", "About", "Services", "Gallery", "Contact", "FAQs"].map((item) => (
+            {["Home", "About", "Services", "Gallery", "Contact", "FAQ"].map((item) => (
               <Link
                 key={item}
                 to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
