@@ -1,4 +1,4 @@
-import FAQ from "../components/FAQ";
+import FAQ from "../Components/FAQ";
 import { Helmet } from "react-helmet";
 
 const FAQPage = () => {

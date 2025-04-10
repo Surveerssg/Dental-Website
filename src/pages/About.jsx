@@ -1,4 +1,4 @@
-import { AboutCard, YouTubeCard } from "../components/AboutCard";
+import { AboutCard, YouTubeCard } from "../Components/AboutCard";
 
 const About = () => {
   return (
