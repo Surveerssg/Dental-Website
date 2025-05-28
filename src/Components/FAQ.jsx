@@ -6,7 +6,7 @@ const faqs = [
   {
     question: "Why should I go to the dentist regularly?",
     answer:
-      'Regular dental visits prevent serious issues before they start, saving you time and money in the long run. Many problems, like cavities and gum disease, don’t show symptoms until they are severe.',
+      "Regular dental visits prevent serious issues before they start, saving you time and money in the long run. Many problems, like cavities and gum disease, don't show symptoms until they are severe.",
   },
   {
     question: "Why should I floss, isn't brushing enough?",
@@ -22,6 +22,22 @@ const faqs = [
     question: "How can I prevent cavities?",
     answer:
       'Brush twice daily with fluoride toothpaste, floss daily, limit sugary foods, and visit the dentist regularly for cleanings and check-ups.',
+  },
+  {
+    question: "What type of toothbrush should I use?",
+    answer: "Use a soft-bristled toothbrush with a small head to reach all areas of your mouth. Electric toothbrushes can also be effective when used properly.",
+  },
+  {
+    question: "Is teeth whitening safe?",
+    answer: "Yes, when done correctly. Over-the-counter and professional treatments are generally safe, but consult your dentist before starting any whitening routine.",
+  },
+  {
+    question: "What causes bad breath and how can I prevent it?",
+    answer: "Bad breath can result from poor oral hygiene, dry mouth, or certain foods. Brush and floss daily, clean your tongue, and drink plenty of water.",
+  },
+  {
+    question: "When should my child have their first dental visit?",
+    answer: "Schedule your child's first dental visit by their first birthday or within six months of their first tooth coming in.",
   },
 ];
 

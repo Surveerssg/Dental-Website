@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const services = [
   { 
@@ -51,6 +52,7 @@ const services = [
 const Services = () => {
   const [selectedService, setSelectedService] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
 
   const filteredServices = services.filter(service => 
     service.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
@@ -101,7 +103,7 @@ const Services = () => {
           <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-8">
             {filteredServices.map((service, index) => (
               <div 
-                key={index} 
+                key={index}
                 className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 cursor-pointer"
                 onClick={() => handleServiceClick(service)}
               >
@@ -117,15 +119,6 @@ const Services = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-blue-800 mb-2">{service.title}</h3>
                 <p className="text-gray-600 mb-4 line-clamp-3">{service.description}</p>
-                <button 
-                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors w-full font-medium"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleServiceClick(service);
-                  }}
-                >
-                  Book Appointment
-                </button>
               </div>
             ))}
           </div>
@@ -185,27 +178,27 @@ const Services = () => {
                   </li>
                 </ul>
               </div>
-              <div className="flex justify-between space-x-4">
-              <button 
-  onClick={() => window.location.href = "/AppointmentForm"}
-  className="px-4 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium flex-1 flex items-center justify-center"
->
-  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-  </svg>
-  Book Appointment
-</button>
-
+              <div className="flex justify-between space-x-4 mt-8">
+                <button
+                  onClick={() => {
+                    navigate('/', { state: { scrollToAppointment: true } });
+                  }}
+                  className="px-4 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-medium flex-1 flex items-center justify-center"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  Book Appointment
+                </button>
                 <button 
-  onClick={() => window.location.href = "/Contact"}
-  className="px-4 py-3 border border-blue-600 text-blue-600 rounded-md hover:bg-blue-50 transition-colors font-medium flex-1 flex items-center justify-center"
->
-  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-  </svg>
-  Contact Us
-</button>
-
+                  onClick={() => window.location.href = "/Contact"}
+                  className="px-4 py-3 border border-blue-600 text-blue-600 rounded-md hover:bg-blue-50 transition-colors font-medium flex-1 flex items-center justify-center"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  Contact Us
+                </button>
               </div>
             </div>
           </div>

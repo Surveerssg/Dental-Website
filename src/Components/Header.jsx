@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaTooth, FaBars, FaTimes } from "react-icons/fa";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Handle scroll effect
   useEffect(() => {
@@ -21,6 +22,24 @@ const Header = () => {
     return location.pathname === path;
   };
 
+  const handleBookAppointment = () => {
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollToAppointment: true } });
+    } else {
+      setTimeout(() => {
+        document.getElementById("appointment")?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  };
+
+  const handleLogoClick = (e) => {
+    if (location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    // else let Link handle navigation
+  };
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
@@ -31,7 +50,7 @@ const Header = () => {
         <div className="flex justify-between items-center">
           {/* Logo & Title */}
           <div className="flex items-center space-x-2">
-            <Link to="/" className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-2" onClick={handleLogoClick}>
               <div className={`p-2 rounded-full ${isScrolled ? "bg-blue-600 text-white" : "bg-white text-blue-600"}`}>
                 <FaTooth className="w-6 h-6" />
               </div>
@@ -67,8 +86,8 @@ const Header = () => {
 
           {/* Appointment Button (Desktop) */}
           <div className="hidden md:block">
-            <Link
-              to="/appointment"
+            <button
+              onClick={handleBookAppointment}
               className={`px-5 py-2 rounded-full transition-colors ${
                 isScrolled 
                   ? "bg-blue-600 text-white hover:bg-blue-700" 
@@ -76,7 +95,7 @@ const Header = () => {
               }`}
             >
               Book Appointment
-            </Link>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -111,13 +130,15 @@ const Header = () => {
                 {item}
               </Link>
             ))}
-            <Link
-              to="/appointment"
+            <button
+              onClick={() => {
+                handleBookAppointment();
+                setIsMenuOpen(false);
+              }}
               className="block w-full text-center mt-4 px-4 py-2 rounded-md text-white bg-blue-600 font-medium hover:bg-blue-700"
-              onClick={() => setIsMenuOpen(false)}
             >
               Book Appointment
-            </Link>
+            </button>
           </div>
         </div>
       )}

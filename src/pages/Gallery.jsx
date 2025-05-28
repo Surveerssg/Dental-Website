@@ -21,14 +21,14 @@ const Gallery = () => {
             key={index}
             className={`w-full bg-white p-2 rounded-lg shadow-lg transition-all duration-300 hover:border-4 hover:border-teal-500 ${
               img.includes("gallery-5.jpg") ? "flex items-center justify-center h-auto" : ""
-            }`}
+            } ${index === 1 ? "h-full" : ""}`}
+            style={index === 1 ? { display: 'flex', alignItems: 'stretch', justifyContent: 'center' } : {}}
           >
             <img
               src={img}
               alt={`Gallery ${index + 1}`}
-              className={`w-full h-auto object-contain ${
-                img.includes("gallery-5.jpg") ? "max-h-full w-auto" : ""
-              }`}
+              className={`w-full ${index === 1 ? "h-full object-cover" : "h-auto object-contain"} ${img.includes("gallery-5.jpg") ? "max-h-full w-auto" : ""}`}
+              style={index === 1 ? { minHeight: '250px', maxHeight: '100%', height: '100%' } : {}}
             />
           </div>
         ))}

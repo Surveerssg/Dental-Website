@@ -55,8 +55,11 @@ const Footer = () => {
               ].map((service) => (
                 <li key={service}>
                   <Link 
-                    to="/services" 
+                    to="/services"
                     className="text-gray-400 hover:text-white transition-colors inline-block py-1"
+                    onClick={() => {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
                   >
                     {service}
                   </Link>

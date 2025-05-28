@@ -12,10 +12,15 @@ import Testimonials from "./Components/Testimonials";
 import Gallery from "./pages/Gallery";
 import FAQPage from "./pages/FAQPage";
 import ScrollHandler from "./Components/ScrollHandler"; 
+import ScrollToTop from "./Components/ScrollToTop";
+import Privacy from "./pages/Privacy";
+import TermsOfService from "./pages/TermsOfService";
+import Sitemap from "./pages/Sitemap";
 
 const App = () => {
   return (
     <>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route
@@ -35,6 +40,9 @@ const App = () => {
         <Route path="/contact" element={<><Contact /><GoogleMaps /></>} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/faq" element={<FAQPage />} />
+        <Route path="/privacy-policy" element={<Privacy />} />
+        <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/sitemap" element={<Sitemap />} />
       </Routes>
       <Footer />
     </>
