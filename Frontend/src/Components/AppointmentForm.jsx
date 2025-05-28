@@ -21,7 +21,7 @@ const AppointmentForm = () => {
   const nextStep = () => setFormStep(formStep + 1);
   const prevStep = () => setFormStep(formStep - 1);
 
-  const API_URL = "http://localhost:5000/api/appointments";
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
