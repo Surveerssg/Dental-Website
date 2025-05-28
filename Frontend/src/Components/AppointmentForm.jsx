@@ -21,15 +21,29 @@ const AppointmentForm = () => {
   const nextStep = () => setFormStep(formStep + 1);
   const prevStep = () => setFormStep(formStep - 1);
 
-  const handleSubmit = (e) => {
+  const API_URL = "http://localhost:5000/api/appointments";
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1500);
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      if (data.success) {
+        setIsSubmitted(true);
+        // Optionally, show WhatsApp button here
+      } else {
+        alert("Failed to book appointment.");
+      }
+    } catch (err) {
+      alert("Error booking appointment.");
+    }
+    setIsSubmitting(false);
   };
 
   const dentalServices = [
@@ -40,6 +54,12 @@ const AppointmentForm = () => {
     "Teeth Whitening",
     "Orthodontics/Braces",
     "Dental Crown",
+    "Dental Fillings",
+    "Cosmetic Dentistry",
+    "Crowns and Bridges",
+    "Gum (Periodontal) Disease Treatment",
+    "Tooth Extraction",
+    "Dentures",
     "Other"
   ];
 
@@ -57,6 +77,12 @@ const AppointmentForm = () => {
     setFormStep(1);
   };
 
+  const doctorNumber = "919810806678"; // Doctor's WhatsApp number (no +)
+  const message = encodeURIComponent(
+    `New Appointment Request:\nName: ${formData.name}\nContact: ${formData.contact}\nDate: ${formData.date}\nTime: ${formData.time}\nService: ${formData.service}\nMessage: ${formData.message}`
+  );
+  const whatsappUrl = `https://wa.me/${doctorNumber}?text=${message}`;
+
   if (isSubmitted) {
     return (
       <section id="appointment" className="py-16 bg-gray-50">
@@ -72,9 +98,17 @@ const AppointmentForm = () => {
               Thank you, {formData.name}. We've received your appointment request for {formData.date} at {formData.time}. 
               Our staff will contact you at {formData.contact} to confirm your appointment.
             </p>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition duration-300 inline-block mt-4"
+            >
+              Send to WhatsApp
+            </a>
             <button 
               onClick={resetForm}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300"
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ml-4"
             >
               Book Another Appointment
             </button>
@@ -139,18 +173,19 @@ const AppointmentForm = () => {
                 
                 {/* Patient Name */}
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2">Patient Name*</label>
+                  <label htmlFor="name" className="block mb-2 font-medium">Name*</label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <FaUser className="text-gray-400" />
                     </div>
                     <input 
-                      type="text" 
+                      id="name"
                       name="name"
+                      type="text"
                       value={formData.name}
                       onChange={handleChange}
                       className="w-full pl-10 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
-                      placeholder="John Doe"
+                      placeholder="Enter your name"
                       required 
                     />
                   </div>
@@ -158,33 +193,41 @@ const AppointmentForm = () => {
                 
                 {/* Gender Dropdown */}
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2">Gender*</label>
+                  <label htmlFor="gender" className="block mb-2 font-medium">Gender*</label>
                   <select 
+                    id="gender"
                     name="gender"
                     value={formData.gender}
                     onChange={handleChange}
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     required
                   >
-                    <option value="">Select gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
+                    <option value="">Select your gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
                   </select>
                 </div>
                 
                 {/* Contact Number */}
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2">Contact Number*</label>
+                  <label htmlFor="contact" className="block mb-2 font-medium">Contact Number*</label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <FaPhone className="text-gray-400" />
                     </div>
                     <input 
-                      type="tel" 
+                      id="contact"
                       name="contact"
+                      type="tel"
                       value={formData.contact}
-                      onChange={handleChange}
+                      onChange={e => {
+                        let value = e.target.value;
+                        if (!value.startsWith('+91')) {
+                          value = '+91' + value.replace(/^\+?91?/, '');
+                        }
+                        setFormData({ ...formData, contact: value });
+                      }}
                       className="w-full pl-10 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                       placeholder="+91 98XXXXXXXX"
                       required
@@ -198,7 +241,7 @@ const AppointmentForm = () => {
                     onClick={nextStep}
                     className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300"
                   >
-                    Next Step
+                    Continue
                   </button>
                 </div>
               </div>
