@@ -57,7 +57,7 @@ const Header = () => {
               <h1 className={`text-xl font-bold hidden md:block ${
                 isScrolled ? "text-gray-800" : "text-white"
               }`}>
-                Dr. Guglani's Dental Centre
+                Dr. Guglani's Multispeciality Dental Centre
               </h1>
             </Link>
           </div>
