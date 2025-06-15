@@ -84,7 +84,10 @@ const AdminDashboard = () => {
       <div className="flex-1 p-8 bg-gray-50 lg:px-8 lg:py-12">
         {window.location.pathname === '/admin/dashboard' || window.location.pathname === '/admin/dashboard/' ? (
           loadingStats ? (
-            <div className="text-center py-8">Loading dashboard statistics...</div>
+            <div className="flex justify-center items-center py-8">
+              <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500"></div>
+              <p className="ml-4 text-gray-700">Loading dashboard statistics...</p>
+            </div>
           ) : statsError ? (
             <div className="text-center py-8 text-red-500">Error: {statsError}</div>
           ) : (
