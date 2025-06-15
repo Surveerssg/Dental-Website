@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import config from '../../config';
 
 const AdminLogin = () => {
   const [username, setUsername] = useState('');
@@ -13,7 +14,7 @@ const AdminLogin = () => {
     e.preventDefault();
     setError('');
     try {
-      const response = await axios.post('/api/admin/login', {
+      const response = await axios.post(`${config.apiBaseUrl}/api/admin/login`, {
         username,
         password,
       });

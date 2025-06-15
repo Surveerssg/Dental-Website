@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import config from '../../config';
 
 const AppointmentsList = () => {
   const [appointments, setAppointments] = useState([]);
@@ -16,7 +17,7 @@ const AppointmentsList = () => {
             Authorization: `Bearer ${token}`,
           },
         };
-        const response = await axios.get('/api/appointments', config);
+        const response = await axios.get(`${config.apiBaseUrl}/api/appointments`, config);
         setAppointments(response.data);
       } catch (err) {
         setError(err.response?.data?.message || err.message || 'Failed to fetch appointments.');
@@ -38,7 +39,7 @@ const AppointmentsList = () => {
         },
       };
       const response = await axios.put(
-        `/api/appointments/${id}/contacted`,
+        `${config.apiBaseUrl}/api/appointments/${id}/contacted`,
         { contactedOnline: !currentStatus },
         config
       );

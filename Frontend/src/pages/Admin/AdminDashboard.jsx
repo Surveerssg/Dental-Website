@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, NavLink, Outlet } from 'react-router-dom';
 import axios from 'axios';
+import config from '../../config';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const AdminDashboard = () => {
             Authorization: `Bearer ${token}`,
           },
         };
-        const response = await axios.get('/api/appointments/stats', config);
+        const response = await axios.get(`${config.apiBaseUrl}/api/appointments/stats`, config);
         setStats(response.data);
       } catch (err) {
         setStatsError(err.response?.data?.message || err.message || 'Failed to fetch statistics.');
