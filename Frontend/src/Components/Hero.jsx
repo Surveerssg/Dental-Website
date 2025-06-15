@@ -15,7 +15,7 @@ const Hero = () => {
   return (
     <section className="relative">
       {/* Hero Image Carousel */}
-      <div className="relative h-[80vh] w-full overflow-hidden">
+      <div className="relative h-[90vh] w-full overflow-hidden">
         <Swiper
           modules={[Autoplay, EffectFade,Pagination]}
           effect="fade"
@@ -27,7 +27,7 @@ const Hero = () => {
           {/* Slide 1 */}
           <SwiperSlide>
   {/* Background Image */}
-  <div className="absolute inset-0 bg-[url('/hero-section.webp')] bg-cover bg-center"></div>
+  <div className="absolute inset-0 bg-[url('/hero-section.png')] bg-cover bg-center bg-no-repeat"></div>
   {/* Dark overlay */}
   <div className="absolute inset-0 bg-blue-900 opacity-40"></div>
 
@@ -48,7 +48,7 @@ const Hero = () => {
           {/* Slide 2 - Dummy */}
           <SwiperSlide>
   {/* Background Image */}
-  <div className="absolute inset-0 bg-[url('/hero-dummy.webp')] bg-cover bg-center"></div>
+  <div className="absolute inset-0 bg-[url('/hero-dummy.jpg')] bg-cover bg-center bg-no-repeat"></div>
   {/* Dark overlay */}
   <div className="absolute inset-0 bg-blue-900 opacity-40"></div>
 

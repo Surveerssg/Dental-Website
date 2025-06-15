@@ -1,15 +1,44 @@
 const mongoose = require('mongoose');
 
-const appointmentSchema = new mongoose.Schema({
-  name: String,
-  gender: String,
-  contact: String,
-  date: String,
-  time: String,
-  service: String,
-  message: String,
-  createdAt: { type: Date, default: Date.now }
-});
+const appointmentSchema = mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+    },
+    date: {
+      type: Date,
+      required: true,
+    },
+    time: {
+      type: String,
+      required: true,
+    },
+    service: {
+      type: String,
+      required: true,
+    },
+    message: {
+      type: String,
+      required: false,
+    },
+    contactedOnline: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const Appointment = mongoose.model('Appointment', appointmentSchema);
 

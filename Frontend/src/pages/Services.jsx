@@ -5,49 +5,50 @@ const services = [
   { 
     title: "Dental Implants", 
     image: "implant.webp", 
-    description: "Restore your smile with permanent, natural-looking tooth replacements that function just like real teeth, providing durability, comfort, and a confident bite" 
+    description: "Missing a tooth or multiple teeth? Dental implants are long-lasting, artificial tooth roots topped with natural-looking crowns. They restore chewing ability and prevent bone loss, giving you back both function and confidence." 
   },
   { 
     title: "Root Canal Treatment", 
-    image: "root-canal.webp", 
-    description: "A procedure to save and repair a severely decayed or infected tooth by removing the pulp, cleaning the canal, and sealing it to prevent further infection." 
+    image: "root-canal.jpg", 
+    description: "Experiencing severe tooth pain or sensitivity? A root canal treats deep decay or infection by cleaning the tooth from the inside and sealing it — saving your natural tooth and relieving pain." 
   },
   { 
     title: "Dental Fillings", 
     image: "dental-filling.webp", 
-    description: "A restorative treatment that fills cavities caused by tooth decay, preventing further damage and restoring the tooth's function and structure." 
+    description: "Have a cavity or hole in your tooth? Dental fillings are used to repair minor decay or cracks, restoring the shape and function of your tooth and stopping the damage from worsening." 
   },
   { 
     title: "Cosmetic Dentistry", 
-    image: "cosmetic-dentistry.webp", 
-    description: "Brighten and perfect your smile with professional teeth whitening, custom veneers, and other cosmetic treatments designed to give you a radiant, confident look." 
+    image: "cosmetic-dentistry.jpg", 
+    description: "Unhappy with how your smile looks? Cosmetic dentistry offers solutions like teeth whitening, veneers, and reshaping to improve the appearance of stained, chipped, or uneven teeth." 
   },
   { 
     title: "Crowns and Bridges", 
-    image: "crowns-and-bridges.webp", 
-    description: "Custom-made restorations used to cover damaged teeth (crowns) or replace missing teeth by bridging the gap between adjacent teeth" 
+    image: "crowns-and-bridges.jpg", 
+    description: "Got a broken tooth or missing one? Crowns are protective caps for damaged teeth, while bridges fill the gap of missing teeth, restoring your smile and bite." 
   },
   { 
     title: "Orthodontics", 
-    image: "orthodontics.webp", 
-    description:"Orthodontic treatments designed to straighten teeth, correct bite issues, and improve overall dental alignment for a healthier, more confident smile."
+    image: "orthodontics.jpg", 
+    description: "Crooked teeth or bite problems? Orthodontic treatments like braces and aligners straighten teeth, improve your bite, and enhance overall dental health and appearance." 
   },
   { 
     title: "Gum (Periodontal) Disease Treatment", 
-    image: "gum.jpg", 
-    description:"Protect your gums from infection with deep cleaning, scaling, and expert care for healthier teeth and a stronger smile."
+    image: "gum.jpeg", 
+    description: "Bleeding gums, bad breath, or loose teeth? These are signs of gum disease. We offer deep cleaning and expert care to treat infection, reduce inflammation, and protect your teeth." 
   },
   { 
     title: "Tooth Extraction", 
     image: "tooth-extraction.webp", 
-    description:"Safe and painless removal of damaged, decayed, or problematic teeth to maintain your overall oral health."
+    description: "Tooth severely damaged, decayed, or causing crowding? Extraction is a safe and quick procedure to remove the problem tooth and prevent further oral health issues." 
   },
   { 
     title: "Dentures", 
-    image: "dentures.webp", 
-    description:"Replace multiple missing teeth with comfortable, removable dentures for a natural look and better oral function."
+    image: "dentures.png", 
+    description: "Missing several or all teeth? Dentures are custom-made, removable replacements that restore your ability to eat, speak, and smile comfortably and naturally." 
   },
 ];
+
 
 const Services = () => {
   const [selectedService, setSelectedService] = useState(null);

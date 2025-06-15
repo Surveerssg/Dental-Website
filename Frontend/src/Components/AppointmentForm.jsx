@@ -4,8 +4,8 @@ import { FaCalendarAlt, FaUser, FaPhone, FaInfoCircle } from "react-icons/fa";
 const AppointmentForm = () => {
   const [formData, setFormData] = useState({
     name: "",
-    gender: "",
-    contact: "",
+    email: "",
+    phone: "",
     date: "",
     time: "",
     service: "",
@@ -21,14 +21,12 @@ const AppointmentForm = () => {
   const nextStep = () => setFormStep(formStep + 1);
   const prevStep = () => setFormStep(formStep - 1);
 
-  const API_URL = import.meta.env.VITE_API_URL;
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch("/api/appointments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -38,7 +36,7 @@ const AppointmentForm = () => {
         setIsSubmitted(true);
         // Optionally, show WhatsApp button here
       } else {
-        alert("Failed to book appointment.");
+        alert("Failed to book appointment." + (data.error ? ": " + data.error : ""));
       }
     } catch (err) {
       alert("Error booking appointment.");
@@ -66,8 +64,8 @@ const AppointmentForm = () => {
   const resetForm = () => {
     setFormData({
       name: "",
-      gender: "",
-      contact: "",
+      email: "",
+      phone: "",
       date: "",
       time: "",
       service: "",
@@ -79,7 +77,7 @@ const AppointmentForm = () => {
 
   const doctorNumber = "919810806678"; // Doctor's WhatsApp number (no +)
   const message = encodeURIComponent(
-    `New Appointment Request:\nName: ${formData.name}\nContact: ${formData.contact}\nDate: ${formData.date}\nTime: ${formData.time}\nService: ${formData.service}\nMessage: ${formData.message}`
+    `New Appointment Request:\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nDate: ${formData.date}\nTime: ${formData.time}\nService: ${formData.service}\nMessage: ${formData.message}`
   );
   const whatsappUrl = `https://wa.me/${doctorNumber}?text=${message}`;
 
@@ -96,7 +94,7 @@ const AppointmentForm = () => {
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Appointment Request Received!</h2>
             <p className="text-gray-600 mb-6">
               Thank you, {formData.name}. We've received your appointment request for {formData.date} at {formData.time}. 
-              Our staff will contact you at {formData.contact} to confirm your appointment.
+              Our staff will contact you at {formData.phone} to confirm your appointment.
             </p>
             <a
               href={whatsappUrl}
@@ -191,46 +189,42 @@ const AppointmentForm = () => {
                   </div>
                 </div>
                 
-                {/* Gender Dropdown */}
+                {/* Patient Email */}
                 <div>
-                  <label htmlFor="gender" className="block mb-2 font-medium">Gender*</label>
-                  <select 
-                    id="gender"
-                    name="gender"
-                    value={formData.gender}
-                    onChange={handleChange}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    required
-                  >
-                    <option value="">Select your gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                  </select>
+                  <label htmlFor="email" className="block mb-2 font-medium">Email*</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <FaUser className="text-gray-400" />
+                    </div>
+                    <input 
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full pl-10 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                      placeholder="Enter your email"
+                      required 
+                    />
+                  </div>
                 </div>
                 
                 {/* Contact Number */}
                 <div>
-                  <label htmlFor="contact" className="block mb-2 font-medium">Contact Number*</label>
+                  <label htmlFor="phone" className="block mb-2 font-medium">Phone Number*</label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <FaPhone className="text-gray-400" />
                     </div>
                     <input 
-                      id="contact"
-                      name="contact"
+                      id="phone"
+                      name="phone"
                       type="tel"
-                      value={formData.contact}
-                      onChange={e => {
-                        let value = e.target.value;
-                        if (!value.startsWith('+91')) {
-                          value = '+91' + value.replace(/^\+?91?/, '');
-                        }
-                        setFormData({ ...formData, contact: value });
-                      }}
-                      className="w-full pl-10 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      placeholder="+91 98XXXXXXXX"
-                      required
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full pl-10 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                      placeholder="e.g., +919876543210"
+                      required 
                     />
                   </div>
                 </div>
