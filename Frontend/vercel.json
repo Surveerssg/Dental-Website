@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/:path((?!static$).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
-} 
+}
