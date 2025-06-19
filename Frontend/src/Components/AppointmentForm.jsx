@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaCalendarAlt, FaUser, FaPhone, FaInfoCircle } from "react-icons/fa";
+import config from "../config";
 
 const AppointmentForm = () => {
   const [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ const AppointmentForm = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/appointments", {
+      const response = await fetch(`${config.apiBaseUrl}/api/appointments`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
