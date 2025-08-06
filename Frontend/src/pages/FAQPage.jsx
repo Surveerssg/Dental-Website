@@ -20,7 +20,6 @@ const FAQPage = () => {
         <meta name="twitter:description" content="Find answers to common dental questions about oral hygiene, cavity prevention, flossing, and children's dental care at Dr. Guglani’s Multispeciality Dental Centre in Delhi." />
         <meta name="twitter:image" content="/logo192.png" />
       </Helmet>
-      <h1 className="text-3xl font-bold mb-6">Frequently Asked Dental Questions</h1>
       <FAQ />
     </div>
   );

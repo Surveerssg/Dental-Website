@@ -33,7 +33,7 @@ const Gallery = () => {
         <meta name="twitter:image" content="/logo192.png" />
       </Helmet>
       <div className="py-16 bg-gradient-to-b from-blue-50 to-white p-10 text-center">
-        <h1 className="text-3xl font-bold mb-6">Our Gallery</h1>
+       <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our <span className="text-blue-600">Gallery</span></h1>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {images.map((img, index) => (
             <div
