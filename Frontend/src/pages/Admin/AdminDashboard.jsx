@@ -18,12 +18,12 @@ const AdminDashboard = () => {
     const fetchStats = async () => {
       try {
         const token = localStorage.getItem('adminToken');
-        const config = {
+        const axiosConfig = {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         };
-        const response = await axios.get(`${config.apiBaseUrl}/api/appointments/stats`, config);
+        const response = await axios.get(`${config.apiBaseUrl}/api/appointments/stats`, axiosConfig);
         setStats(response.data);
       } catch (err) {
         setStatsError(err.response?.data?.message || err.message || 'Failed to fetch statistics.');
@@ -97,17 +97,17 @@ const AdminDashboard = () => {
                 {/* Total Appointments Card */}
                 <div className="bg-white p-6 rounded-lg shadow-md transition-shadow hover:shadow-lg">
                   <h3 className="text-xl font-semibold mb-2 text-gray-700">Total Appointments</h3>
-                  <p className="text-3xl font-bold text-blue-600">{stats.totalAppointments}</p>
+                  <p className="text-3xl font-bold text-blue-600">{Number(stats.totalAppointments) || 0}</p>
                 </div>
                 {/* Dealt With Appointments Card */}
                 <div className="bg-white p-6 rounded-lg shadow-md transition-shadow hover:shadow-lg">
                   <h3 className="text-xl font-semibold mb-2 text-gray-700">Dealt With Appointments</h3>
-                  <p className="text-3xl font-bold text-green-600">{stats.dealtWithAppointments}</p>
+                  <p className="text-3xl font-bold text-green-600">{Number(stats.dealtWithAppointments) || 0}</p>
                 </div>
                 {/* Remaining Pending Appointments Card */}
                 <div className="bg-white p-6 rounded-lg shadow-md transition-shadow hover:shadow-lg">
                   <h3 className="text-xl font-semibold mb-2 text-gray-700">Pending Appointments</h3>
-                  <p className="text-3xl font-bold text-orange-500">{stats.totalAppointments - stats.dealtWithAppointments}</p>
+                  <p className="text-3xl font-bold text-orange-500">{Math.max(0, (Number(stats.totalAppointments) || 0) - (Number(stats.dealtWithAppointments) || 0))}</p>
                 </div>
               </div>
             </>

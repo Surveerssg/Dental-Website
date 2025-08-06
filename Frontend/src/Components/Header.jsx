@@ -8,6 +8,8 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const isLightBgPage = ["/about", "/services", "/gallery", "/contact", "/faq"].includes(location.pathname.toLowerCase());
+
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -55,7 +57,7 @@ const Header = () => {
                 <FaTooth className="w-6 h-6" />
               </div>
               <h1 className={`text-xl font-bold hidden md:block ${
-                isScrolled ? "text-gray-800" : "text-white"
+                isScrolled || isLightBgPage ? "text-gray-800" : "text-white"
               }`}>
                 Dr. Guglani's Multispeciality Dental Centre
               </h1>
@@ -70,14 +72,14 @@ const Header = () => {
                 to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
                 className={`font-medium relative transition-all ${
                   isActive(item === "Home" ? "/" : `/${item.toLowerCase()}`) 
-                    ? `${isScrolled ? "text-blue-600" : "text-white font-bold"}`
-                    : `${isScrolled ? "text-gray-600 hover:text-blue-600" : "text-white hover:text-blue-100"}`
+                    ? `${isScrolled || isLightBgPage ? "text-blue-600" : "text-white font-bold"}`
+                    : `${isScrolled || isLightBgPage ? "text-gray-800 hover:text-blue-600" : "text-white hover:text-blue-100"}`
                 }`}
               >
                 {item}
                 {isActive(item === "Home" ? "/" : `/${item.toLowerCase()}`) && (
                   <span className={`absolute -bottom-1 left-0 w-full h-0.5 ${
-                    isScrolled ? "bg-blue-600" : "bg-white"
+                    isScrolled || isLightBgPage ? "bg-blue-600" : "bg-white"
                   }`}></span>
                 )}
               </Link>

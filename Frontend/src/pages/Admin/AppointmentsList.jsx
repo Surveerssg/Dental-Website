@@ -12,13 +12,13 @@ const AppointmentsList = () => {
     const fetchAppointments = async () => {
       try {
         const token = localStorage.getItem('adminToken');
-        const config = {
+        const axiosConfig = {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         };
-        const response = await axios.get(`${config.apiBaseUrl}/api/appointments`, config);
-        setAppointments(response.data);
+        const response = await axios.get(`${config.apiBaseUrl}/api/appointments`, axiosConfig);
+        setAppointments(Array.isArray(response.data) ? response.data : []);
       } catch (err) {
         setError(err.response?.data?.message || err.message || 'Failed to fetch appointments.');
       } finally {
@@ -32,7 +32,7 @@ const AppointmentsList = () => {
     setUpdateError(null);
     try {
       const token = localStorage.getItem('adminToken');
-      const config = {
+      const axiosConfig = {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
@@ -41,7 +41,7 @@ const AppointmentsList = () => {
       const response = await axios.put(
         `${config.apiBaseUrl}/api/appointments/${id}/contacted`,
         { contactedOnline: !currentStatus },
-        config
+        axiosConfig
       );
       setAppointments((prevAppointments) =>
         prevAppointments.map((app) =>
@@ -64,7 +64,7 @@ const AppointmentsList = () => {
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-6 text-gray-800">All Appointments</h2>
-      {appointments.length === 0 ? (
+      {!Array.isArray(appointments) || appointments.length === 0 ? (
         <p className="text-gray-600">No appointments found.</p>
       ) : (
         <div className="overflow-x-auto">
@@ -82,7 +82,7 @@ const AppointmentsList = () => {
               </tr>
             </thead>
             <tbody>
-              {appointments.map((appointment) => (
+              {Array.isArray(appointments) && appointments.map((appointment) => (
                 <tr key={appointment._id} className="hover:bg-gray-50">
                   <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">{appointment.name}</td>
                   <td className="py-2 px-4 border-b border-gray-200 text-sm text-gray-900">{appointment.email}</td>

@@ -13,7 +13,7 @@ const images = [
 
 const Gallery = () => {
   return (
-    <div className="p-10 text-center">
+    <div className="py-16 bg-gradient-to-b from-blue-50 to-white p-10 text-center">
       <h2 className="text-3xl font-bold mb-6">Our Gallery</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {images.map((img, index) => (
