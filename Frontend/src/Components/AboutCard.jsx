@@ -26,7 +26,7 @@ const AboutCard = () => {
               <h1 className="text-3xl font-bold text-gray-800">About Dr. Guglani</h1>
             </div>
             <p className="text-gray-700 leading-relaxed mb-6">
-  With 32 years of dental excellence, Dr. Sarabpreet Singh Guglani is a distinguished Specialist Dental Surgeon known for his commitment to patient-centered care. A graduate of D.A.V. (C) Dental College, Yamuna Nagar (BDS 1988–1992), he has been a trusted name in Delhi’s dental community since establishing his practice in 1993. 
+  With 32 years of dental excellence, Dr. Sarabpreet Singh Guglani is a distinguished Specialist Dental Surgeon known for his commitment to patient-centered care. A BDS medallist of D.A.V. Dental College, Yamuna Nagar (1988–1992), he has been a trusted name in Delhi’s dental community since establishing his practice in 1993. 
 
   Dr. Guglani has held numerous leadership roles within the Indian Dental Association, including President of the North West Delhi branch in 2017, Advisor to IDA North-West Delhi, and Chairman-CDH for IDA Delhi State. His involvement continues as a representative to the IDA Delhi State branch and a Central Council member of IDA Head Office.
 
